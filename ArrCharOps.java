@@ -119,7 +119,7 @@ public class ArrCharOps {
     public static char[] concat(char[] arr1, char[] arr2) {
 
        
-        int lenghtOfArrs = arr1.length + arr2.length + 1;
+        int lenghtOfArrs = arr1.length + arr2.length;
 
         if ((lenghtOfArrs) == 1) { 
            char[] arrEmpty = {};
@@ -128,10 +128,10 @@ public class ArrCharOps {
             char[] concatArr = Arrays.copyOf(arr1, lenghtOfArrs);
         
            
-                concatArr[arr1.length] = ' ';
+        
                 
             for ( int i = 0; i < arr2.length ; i++) {
-                concatArr[arr1.length + 1 + i] = arr2[i];
+                concatArr[arr1.length + i] = arr2[i];
             }
 
         return concatArr;
