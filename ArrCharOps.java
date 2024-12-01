@@ -40,8 +40,8 @@ public class ArrCharOps {
      */
     public static char charAt(char[] arr, int index) {
        
-      String getarray =  Arrays.toString(arr);
-      return getarray.charAt(index);
+       char n = arr[index];
+       return n;
 
     }
 
@@ -71,9 +71,9 @@ public class ArrCharOps {
         
             if (arr.length == 0) { return -1; }
 
-            for (int i = 0; i < arr.length; i++) 
+            for (int i = 0; i < arr.length; i++) {
             { if  (charAt(arr, i) == ch ) return i; }
-
+            }
         return -1;
     }
 
@@ -83,10 +83,11 @@ public class ArrCharOps {
         
          if (arr.length == 0) { return -1; }
 
-            int i;
-        for ( i = fromIndex ; i < arr.length; i++) 
-        { if (charAt(arr, i) == ch ) return i; }
-
+        int i;
+        for ( i = fromIndex ; i < arr.length; i++) {
+            char n = charAt(arr, i);
+        { if ( n == ch ) return i; }
+        }
         return -1;
     }
 
@@ -101,15 +102,16 @@ public class ArrCharOps {
             boolean isTherechar = false;
 
          for (int i = 0; i < arr.length; i++) 
-            { if  (charAt(arr, i) == ch ) {
+           { char n = charAt(arr, i);
+            if  ( n == ch ) {
                 indexWasAt = i;
                 isTherechar = true;
                 } 
             }
 
             if (isTherechar) { return indexWasAt; }
-    
-        return -1;
+            else return -1;
+            
     }
 
     /* Returns an array which is the concatanation of the two given arrays.
@@ -117,19 +119,19 @@ public class ArrCharOps {
     public static char[] concat(char[] arr1, char[] arr2) {
 
        
-        int lenghtOfArrs = arr1.length + arr2.length;
+        int lenghtOfArrs = arr1.length + arr2.length + 1;
 
-        if ((lenghtOfArrs) == 0) { 
+        if ((lenghtOfArrs) == 1) { 
            char[] arrEmpty = {};
             return arrEmpty; 
         }
             char[] concatArr = Arrays.copyOf(arr1, lenghtOfArrs);
         
-            int i; 
-            int j = 0;
-            for ( i = arr1.length; i < lenghtOfArrs; i++) {
-                concatArr[i] = arr2[j];
-                j++;
+           
+                concatArr[arr1.length] = ' ';
+                
+            for ( int i = 0; i < arr2.length ; i++) {
+                concatArr[arr1.length + 1 + i] = arr2[i];
             }
 
         return concatArr;
@@ -154,6 +156,7 @@ public class ArrCharOps {
 
             for (int i = 0; i < arrayLength; i++) {
                 subArray[i] = arr[j]; 
+                j++;
             }
 
 
@@ -213,6 +216,7 @@ public class ArrCharOps {
             if (str2.isBlank()) { return -2; }
                 
             int shorterLength = Math.min(str1.length(), str2.length());
+            shorterLength = shorterLength == 0 ? 1 : shorterLength;
             boolean isStr1Less;
             int l = 0;
 
