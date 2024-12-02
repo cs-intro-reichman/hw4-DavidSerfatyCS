@@ -1,10 +1,13 @@
 
 
 
+
+
 public class Primes {
     public static void main(String[] args) {
        
-            int roofN = Integer.parseInt(args[0]);
+           // int roofN = Integer.parseInt(args[0]);
+            int roofN = 7;
             int n = roofN + 1;
 
        
@@ -21,8 +24,8 @@ public class Primes {
                 for ( j = p ; j < n; j++) {
 
                     boolean isDivisible = (double) ( (j + 1) % p) == 0;
-
-                    if (isDivisible == true) { isPrime[j+1] = false; }
+                    if ( j + 1 > roofN ) { break; }
+                    else if (isDivisible == true) { isPrime[j+1] = false; }
                 }  
             }
             p = getNextprime(isPrime, p + 1);
